@@ -75,24 +75,3 @@ void InMemoryDB::rollback(){
     }
     else cout << "Error: no current transaction.\n";
 }
-
-int main(){
-    InMemoryDB inmemoryDB;
-    cout << inmemoryDB.get("A") << std::endl;
-    inmemoryDB.put("A", 5);
-    inmemoryDB.begin_transaction();
-    inmemoryDB.put("A", 5);
-    cout << inmemoryDB.get("A") << std::endl;
-    inmemoryDB.put("A", 6);
-    inmemoryDB.commit();
-    cout << inmemoryDB.get("A") << std::endl;
-    inmemoryDB.commit();
-    inmemoryDB.rollback();
-    cout << inmemoryDB.get("B") << std::endl;
-    inmemoryDB.begin_transaction();
-    inmemoryDB.put("B", 10);
-    inmemoryDB.rollback();
-    cout << inmemoryDB.get("B") << std::endl;
-
-    return 0;
-}
